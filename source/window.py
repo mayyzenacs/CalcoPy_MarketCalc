@@ -4,6 +4,7 @@ import tkinter as tk
 from mode import Calculator
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
+from history import saveHistory, downloadHistory
 
 ## INICIALIZAÇÃO 
 class Apliccation(): 
@@ -279,6 +280,9 @@ class Apliccation():
 
         self.copyBt.bind("<Button-1>", lambda arg: self.copyMsg.config(text="preço de copiado"))
         self.copyBt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copyMsg.config(text="")))
+
+    def saveAs(self): 
+        self.saveButton = tk.Button(self.frameBack,text="s", bg="#DCDCDC", bd=0, command= self.copyButton, font=("verdana", 11, "italic", 'bold'))
     
 
     ## DEFININDO BOTÃO DE LIMPEZA
