@@ -282,7 +282,8 @@ class Apliccation():
         self.copyBt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copyMsg.config(text="")))
 
     def saveAs(self): 
-        self.saveButton = tk.Button(self.frameBack,text="s", bg="#DCDCDC", bd=0, command= self.copyButton, font=("verdana", 11, "italic", 'bold'))
+        self.saveButton = tk.Button(self.frameBack,text="s", bg="#DCDCDC", bd=0, command= downloadHistory(), font=("verdana", 11, "italic", 'bold'))
+        self.saveButton.place(relx=0.01, rely=0.70, relheight=0.05, relwidth=0.25)
     
 
     ## DEFININDO BOTÃO DE LIMPEZA
