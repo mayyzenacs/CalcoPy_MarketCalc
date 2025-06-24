@@ -1,4 +1,5 @@
 import math
+from history import saveHistory
 
 ## DEFININDO CLASSE DE CÁLCULO
 class Calculator():
@@ -20,19 +21,23 @@ class Calculator():
 
             if option == 0: 
                 discount = 1 - 0.10
+                percent = "10%"
 
             elif option == 1:  
                 discount = 1 - 0.20
+                percent = "20%"
 
             elif option == 2:
                 discount = 1 - 0.35
+                percent = "35%"
                 
         except:
-            return " "
+            return ""
 
         finally:
             var = self.floatValue / discount
             outcome = math.ceil(var * 100) / 100
+            saveHistory(value, outcome, percent)
             return outcome
     
     ## FUNÇÃO QUE CALCULO O VALOR PARA OFERTA MELI
@@ -49,7 +54,6 @@ class Calculator():
         
 
         try:
-
             fullVar = int(fullOption) * int(fullWeeks)
             print(fullOption, fullWeeks)
         

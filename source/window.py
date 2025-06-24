@@ -4,7 +4,7 @@ import tkinter as tk
 from mode import Calculator
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
-from history import saveHistory, downloadHistory
+from history import savefromHistory
 
 ## INICIALIZAÇÃO 
 class Apliccation(): 
@@ -26,6 +26,7 @@ class Apliccation():
         self.logo()
         self.radiosFull()
         self.fullCalc()
+        self.saveAs()
     
 
     ## DEFININDO FUNDO PRINCIPAL
@@ -282,8 +283,8 @@ class Apliccation():
         self.copyBt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copyMsg.config(text="")))
 
     def saveAs(self): 
-        self.saveButton = tk.Button(self.frameBack,text="s", bg="#DCDCDC", bd=0, command= downloadHistory(), font=("verdana", 11, "italic", 'bold'))
-        self.saveButton.place(relx=0.01, rely=0.70, relheight=0.05, relwidth=0.25)
+        self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= savefromHistory, font=("verdana", 8, "italic", 'bold'))
+        self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
     
 
     ## DEFININDO BOTÃO DE LIMPEZA
@@ -294,9 +295,10 @@ class Apliccation():
                         text="Clear", 
                         bd=1, 
                         bg="#4F4F4F",
-                        command= self.clear
+                        command= self.clear,
+                        font=("verdana", 10, "italic", 'bold')
                         )
-        self.del_bt.place(relheight=0.09, relwidth=0.09,relx=0.5, rely=0.94, anchor=tk.CENTER)
+        self.del_bt.place(relheight=0.08, relwidth=0.10,relx=0.085, rely=0.76)
 
 
     ## FUNÇÃO DO BOTÃO LIMPAR
