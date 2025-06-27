@@ -45,8 +45,6 @@ def savefromHistory():
     if filepath:
         df.to_excel(filepath)
         messagebox.Message('Arquivo salvo com sucesso')
-    else: 
-        pass
     
 
 

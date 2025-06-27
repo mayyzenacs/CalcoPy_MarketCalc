@@ -1,5 +1,6 @@
 import math
 from history import saveHistory
+from tkinter import messagebox
 
 ## DEFININDO CLASSE DE CÁLCULO
 class Calculator():
@@ -16,7 +17,7 @@ class Calculator():
         if value is None or value == '':
             return ''
         
-        try: 
+        try:
             self.floatValue = float(value)
 
             if option == 0: 
@@ -31,15 +32,14 @@ class Calculator():
                 discount = 1 - 0.35
                 percent = "35%"
                 
-        except:
-            return ""
-
-        finally:
             var = self.floatValue / discount
             outcome = math.ceil(var * 100) / 100
             saveHistory(value, outcome, percent)
             return outcome
-    
+        except:
+            messagebox.showerror('erro', 'Valor inválido')
+            return ''
+
     ## FUNÇÃO QUE CALCULO O VALOR PARA OFERTA MELI
     def offer(self):
         return self.floatValue - (self.floatValue * 0.03) 
@@ -56,13 +56,13 @@ class Calculator():
         try:
             fullVar = int(fullOption) * int(fullWeeks)
             print(fullOption, fullWeeks)
+            return(fullVar)
         
         except ValueError:
-           return('error')
+           messagebox.showerror('erro', 'Valor inválido')
+           return ''
         
-
-        finally:
-            return(fullVar)
+            
 
     
 

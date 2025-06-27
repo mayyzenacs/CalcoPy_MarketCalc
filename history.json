@@ -1,20 +1,32 @@
 [
     {
-        "data": "23/06/2025 21:33",
-        "precoPor": "3",
-        "precoDe": 3.34,
-        "percent": "10%"
-    },
-    {
-        "data": "23/06/2025 21:33",
-        "precoPor": "20",
-        "precoDe": 22.23,
-        "percent": "10%"
-    },
-    {
-        "data": "23/06/2025 21:36",
+        "data": "26/06/2025 21:30",
         "precoPor": "29",
-        "precoDe": 36.25,
-        "percent": "20%"
+        "precoDe": 32.23,
+        "percent": "10%"
+    },
+    {
+        "data": "26/06/2025 22:03",
+        "precoPor": "29.9",
+        "precoDe": 33.23,
+        "percent": "10%"
+    },
+    {
+        "data": "26/06/2025 22:04",
+        "precoPor": "29",
+        "precoDe": 32.23,
+        "percent": "10%"
+    },
+    {
+        "data": "26/06/2025 22:15",
+        "precoPor": "39.8",
+        "precoDe": 44.23,
+        "percent": "10%"
+    },
+    {
+        "data": "26/06/2025 22:27",
+        "precoPor": "59.9",
+        "precoDe": 66.56,
+        "percent": "10%"
     }
 ]

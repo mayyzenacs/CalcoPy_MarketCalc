@@ -39,7 +39,7 @@ class Apliccation():
 
     ## DEFININDO O LOGO NO TOPO
     def logo(self):
-        self.bgImage = Image.open('source/img/logo.png')
+        self.bgImage = Image.open('source\img\logo.png')
         self.resizedImage = self.bgImage.resize((500,180))
         self.imageB = ImageTk.PhotoImage(self.resizedImage)
 
