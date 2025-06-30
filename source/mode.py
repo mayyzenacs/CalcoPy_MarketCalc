@@ -49,8 +49,6 @@ class Calculator():
     def mathFull(self, fullOption, fullWeeks): 
         if fullWeeks == '':
             return ''
-        elif fullOption == 0: 
-            return('error')
         
 
         try:
