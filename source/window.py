@@ -1,17 +1,16 @@
-
-## IMPORTANDO BIBLIOTECAS IMPORTANTES
 import tkinter as tk
 from mode import Calculator
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
 from history import savefromHistory
 
-## INICIALIZAÇÃO 
+'''
+    initial class and functions calls
+'''
 class Apliccation(): 
-
     def __init__(self):
         self.root = root
-        self.calc = Calculator()
+        self.classCalc = Calculator()
         self.screen()
         self.frame()
         self.buttons()
@@ -29,16 +28,21 @@ class Apliccation():
         self.saveAs()
     
 
-    ## DEFININDO FUNDO PRINCIPAL
+    '''
+        backscreen
+    '''
     def screen(self):
+
         self.root.title("CalcoPy MarketCalc by Mayra Pereira")
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
         self.root.resizable(False, False)
 
-
-    ## DEFININDO O LOGO NO TOPO
+    '''
+        set images
+    '''
     def logo(self):
+
         self.bgImage = Image.open('source\img\logo.png')
         self.resizedImage = self.bgImage.resize((500,180))
         self.imageB = ImageTk.PhotoImage(self.resizedImage)
@@ -50,8 +54,8 @@ class Apliccation():
         self.bgImageLabel.place(relheight=0.21, relwidth=1, anchor=tk.CENTER, relx=0.5, rely=0.1)
 
 
-    ## FRAME PRINCIPAL
     def frame(self):
+
         self.frameBack = tk.Frame(self.root, relief="solid", bg="#4F4F4F")
         self.frameBack.place(relx=0.5, rely=0.59, relheight= 0.78,relwidth=0.95, anchor=tk.CENTER)
 
@@ -64,16 +68,16 @@ class Apliccation():
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.037, anchor=tk.CENTER)
        
 
-    ## DEFININDO RADIO BUTTONS DE OPÇÃO
     def checkbutton(self): 
+
         self.choice = tk.Label(self.frameBack, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.choice.place(relheight=0.08, relwidth=1, relx=0.5, rely=0.10, anchor=tk.CENTER)
 
-        self.var = tk.IntVar()
+        self.radioChoice = tk.IntVar()
         self.check = tk.Radiobutton(
                         self.frameBack, 
-                        text="10%", 
-                        variable=self.var, 
+                        text="15%", 
+                        variable=self.radioChoice, 
                         value=0, 
                         bd=0, 
                         highlightthickness=0, 
@@ -84,7 +88,7 @@ class Apliccation():
         self.check2 = tk.Radiobutton(
                         self.frameBack, 
                         text="20%", 
-                        variable=self.var, 
+                        variable=self.radioChoice, 
                         value=1, 
                         bd=0, 
                         highlightthickness=0, 
@@ -95,7 +99,7 @@ class Apliccation():
         self.check3 = tk.Radiobutton(
                         self.frameBack, 
                         text="35%", 
-                        variable=self.var, 
+                        variable=self.radioChoice, 
                         value=2, 
                         bd=0, 
                         highlightthickness=0, 
@@ -108,9 +112,8 @@ class Apliccation():
         self.check3.place(relheight= 0.12, relwidth=0.22, relx=0.7, rely=0.19, anchor='w')
 
 
-    ## DEFININDO A ENTRADA QUE RECEBE O VALOR
     def entry(self):
-        ## ENTRADA DO VALOR INICIAL (PREÇO POR)
+
         self.entryCalc = tk.Entry(
                         self.frameBack, 
                         bd=0, 
@@ -124,29 +127,41 @@ class Apliccation():
         self.entryText = tk.Label(self.frameBack, text="Preço Por", bg="#4F4F4F", font=("Verdana", 15, "bold"))
         self.entryText.place(relheight=0.09, relwidth=1, relx=0.38, rely=0.28, anchor=tk.CENTER)
 
-    # COLETA OS VALORES INSERIDOS
+
+    '''
+        collecting entries
+    '''
     def take(self):
-        option = self.var.get()
-        valor = self.entryCalc.get().replace(",",".")   
-        self.returnResult = self.calc.calc(option, valor)
+        '''
+            'radioOption' get the radio choice
+            'entryValue' get the first entry 'precoPor'
+            'returnResult' call class Calculator to pass the values and return the result from module mode.py
+        '''
+        radioOption = self.radioChoice.get()
+        entryValue = self.entryCalc.get().replace(",",".")   
+        self.returnResult = self.classCalc.calc(radioOption, entryValue)
 
         self.offerLabel()
 
-        ## POSICIONA O VALOR FINAL NO FRAME
+        '''
+            result set the return of 'returnResult' to be shown
+        '''
         self.result = tk.StringVar()
         self.result.set(self.returnResult)
         self.labelReturn = tk.Label(self.frameBack, textvariable = self.result, font=("verdana", 21, "bold"), fg='blue')
         self.labelReturn.place(relx=0.24, rely=0.55, relheight=0.14, relwidth=0.30)        
         
 
-    ## INSERINDO BOTÃO DE CALCULO 
+    '''
+        just the basic functionality of the 'calcular' button
+    '''
     def buttons(self):
         self.calcBt = tk.Button(self.frameBack, text="Calcular", bg="#DCDCDC", bd=0, command=self.take, font=("verdana", 11, "bold", 'italic'), justify='center')
         self.calcBt.place(relx=0.052, rely=0.33, relheight=0.12, relwidth=0.16)
 
 
-    ## LABEL QUE RETORNA O RESULTADO
     def label(self): 
+
         var = tk.StringVar()
         label = tk.Label(
                         self.frameBack, 
@@ -160,19 +175,22 @@ class Apliccation():
         label.place(relx=0.54, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
 
 
-
-    ## DEFININDO LABEL DE OFERTA
     def offerLabel(self):
+
         self.offerText = tk.Label(self.frameBack, text="Oferta -3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offerText.place(relx=0.26, rely=0.73, relwidth=0.28, relheight=0.06, anchor="w")
 
         self.valueOffer = tk.StringVar()
-        self.valueOffer.set(f"{self.calc.offer():.2f}")
+        self.valueOffer.set(f"{self.classCalc.offer():.2f}")
         self.offerReturn = tk.Label(self.frameBack, textvariable=self.valueOffer, font=("Verdana", 12, "bold"))
         self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
 
 
+    '''
+        all the full label interface below
+    '''
     def radiosFull(self): 
+
         self.fullText = tk.Label(
                         self.frameBack, 
                         text="Semanas", 
@@ -240,7 +258,6 @@ class Apliccation():
                         )
         self.fullTextResult.place(relx=0.62, rely=0.60, relwidth=0.31, relheight=0.07, anchor="w")
 
-        ## LABEL DO CALCULO DO FULL
         self.entryFullWeek = tk.Entry(
                         self.frameBack, 
                         bd=0, 
@@ -253,41 +270,42 @@ class Apliccation():
         self.calcBt = tk.Button(self.frameBack, text="Full", bg="#DCDCDC", bd=0, command=self.fullCalc, font=("verdana", 12, "bold", 'italic'), justify='center')
         self.calcBt.place(relx=0.706, rely=0.76, relheight=0.09, relwidth=0.13)
 
+
     def fullCalc(self):
         
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
-
         
-        self.placefullResult.set(self.calc.mathFull(getFullChoice, weekEntry))
-
+        self.placefullResult.set(self.classCalc.mathFull(getFullChoice, weekEntry))
         self.fullResult = tk.Label(self.frameBack, textvariable= self.placefullResult, font=("verdana", 15, "bold"), fg="blue")
-        
         self.fullResult.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.68, anchor=tk.CENTER)
 
-    ## FUNÇÃO DE USO DO BOTÃO COPIAR
+
     def copyButton(self):
+
         copy = self.returnResult
         self.root.clipboard_clear()
         self.root.clipboard_append(copy)
 
-    ## DEFININDO O BOTÃO DE COPIAR
+
     def copyText(self):
+
         self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copyButton, font=("verdana", 11, "italic", 'bold'))
         self.copyBt.place(relx=0.054, rely=0.56, relheight=0.12, relwidth=0.16)
 
         self.copyMsg = tk.Label(self.frameBack, text="", bg="#4F4F4F", font=("verdana", 8, 'italic'))
-        self.copyMsg.place(relx=0.01, rely=0.70, relheight=0.05, relwidth=0.25)
+        self.copyMsg.place(relx=0.01, rely=0.69, relheight=0.05, relwidth=0.25)
 
         self.copyBt.bind("<Button-1>", lambda arg: self.copyMsg.config(text="preço de copiado"))
         self.copyBt.bind("<ButtonRelease-1>", lambda arg: self.root.after(1000, lambda: self.copyMsg.config(text="")))
 
+
     def saveAs(self): 
+
         self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= savefromHistory, font=("verdana", 8, "italic", 'bold'))
         self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
     
 
-    ## DEFININDO BOTÃO DE LIMPEZA
     def delButton(self):
         
         self.del_bt = tk.Button(
@@ -301,8 +319,8 @@ class Apliccation():
         self.del_bt.place(relheight=0.08, relwidth=0.10,relx=0.085, rely=0.76)
 
 
-    ## FUNÇÃO DO BOTÃO LIMPAR
     def clear(self):
+
         self.entryCalc.delete(0, tk.END)
         self.valueOffer.set('')
         self.result.set('')
