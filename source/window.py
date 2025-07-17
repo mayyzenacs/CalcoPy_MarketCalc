@@ -141,7 +141,8 @@ class Apliccation():
         entryValue = self.entryCalc.get().replace(",",".")   
         self.returnResult = self.classCalc.calc(radioOption, entryValue)
 
-        self.offerLabel()
+        if self.returnResult:
+            self.offerLabel()
 
         '''
             result set the return of 'returnResult' to be shown

@@ -43,9 +43,9 @@ class Calculator():
             '''
                 basic calc is how percent works in real life, outcome is a math ceil to round the result and avoid lack 0,1 cent in the operation
             '''    
-            varCalc = self.floatValue / (1 - discount)
+            originalValue = self.floatValue / (1 - discount)
 
-            outcome = ceil(varCalc * 100) / 100
+            outcome = ceil(originalValue * 100) / 100
 
             saveHistory(self.floatValue, outcome, percent)
             return outcome
@@ -55,12 +55,16 @@ class Calculator():
             return ''
 
     def offer(self):
-
-        return round(self.floatValue - (self.floatValue * 0.03))
+        '''
+            calcule the offer price from a value, it's useful for e-commerce that uses mercado livre and participate from recurrent offers
+        '''
+        return self.floatValue - (self.floatValue * 0.03)
     
 
-    ## CÁLCULO DO ESTOQUE FULL POR SEMANA
     def mathFull(self, fullOption, fullWeeks): 
+        '''
+            calculate how many items you need to send to full (a shipment method) uses the number of items that you sold in a certain number of weeks 
+        '''
         if fullWeeks == '':
             return ''
 
