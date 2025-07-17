@@ -130,7 +130,8 @@ class Apliccation():
         valor = self.entryCalc.get().replace(",",".")   
         self.returnResult = self.calc.calc(option, valor)
 
-        self.offerLabel()
+        if self.returnResult:
+            self.offerLabel()
 
         ## POSICIONA O VALOR FINAL NO FRAME
         self.result = tk.StringVar()
