@@ -59,8 +59,9 @@ class Calculator():
             calcule the offer price from a value, it's useful for e-commerce that uses mercado livre and participate from recurrent offers
         '''
         return self.floatValue - (self.floatValue * 0.03)
-    
 
+
+    ## CÁLCULO DO ESTOQUE FULL POR SEMANA
     def mathFull(self, fullOption, fullWeeks): 
         '''
             calculate how many items you need to send to full (a shipment method) uses the number of items that you sold in a certain number of weeks 
