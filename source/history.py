@@ -5,6 +5,9 @@ import pandas as pd
 from datetime import datetime
 from tkinter import filedialog, messagebox
 
+'''
+    taking paths to save history log
+'''
 APPDATA_DIR = os.getenv('LOCALAPPDATA')
 HISTORY_DIR = os.path.join(APPDATA_DIR, 'CalcoPy MarketCalc')
 HISTORY_FILE = os.path.join(HISTORY_DIR, 'history.json')
@@ -13,8 +16,11 @@ os.makedirs(HISTORY_DIR, exist_ok=True)
 
 
 def saveHistory(precoPor, precoDe, percent):
+    '''
+        
+    '''
     history =  []
-
+    
     if os.path.exists(HISTORY_FILE): 
         with open(HISTORY_FILE, 'r') as archive: 
             try: 
