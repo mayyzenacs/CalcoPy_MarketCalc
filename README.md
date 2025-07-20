@@ -1,5 +1,7 @@
 # Calculadora de Preços Comerciais
 
+![](https://i.imgur.com/6Oi0NvX.png)
+
 ## O que é um preço comercial?
 Preço comercial é um preço atrativo para o cliente considerando um preço arredondado sem números quebrados ou que instigua um preço menor. Como os preços "99,9". 
 
@@ -23,7 +25,7 @@ O programa traz esse cálculo embora simples, mas que ainda toma tempo, de forma
 
 *O programa não possui licença, o windows defender pode detectar um falso positivo, coloque ele nas exceções*
 
-![](https://imgur.com/ndyS7X7)
+![](https://i.imgur.com/ndyS7X7.png)
 
 - **Campo 1:** Campo para selecionar qual será a porcentagem de cálculo para desconto.
 
