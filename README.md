@@ -1,4 +1,4 @@
-# Calculadora de Preços Comerciais
+# CalcoPy MktCalc
 
 ![](https://i.imgur.com/6Oi0NvX.png)
 
@@ -25,7 +25,7 @@ O programa traz esse cálculo embora simples, mas que ainda toma tempo, de forma
 
 *O programa não possui licença, o windows defender pode detectar um falso positivo, coloque ele nas exceções*
 
-![](https://i.imgur.com/ndyS7X7.png)
+![](https://i.imgur.com/HXlPNAN.png)
 
 - **Campo 1:** Campo para selecionar qual será a porcentagem de cálculo para desconto.
 
