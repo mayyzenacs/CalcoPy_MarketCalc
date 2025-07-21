@@ -14,7 +14,6 @@ HISTORY_FILE = os.path.join(HISTORY_DIR, 'history.json')
 
 os.makedirs(HISTORY_DIR, exist_ok=True)
 
-
 def saveHistory(precoPor, precoDe, percent):
     '''
         
@@ -22,9 +21,9 @@ def saveHistory(precoPor, precoDe, percent):
     history =  []
     
     if os.path.exists(HISTORY_FILE): 
-        with open(HISTORY_FILE, 'r') as archive: 
+        with open(HISTORY_FILE, 'r') as file: 
             try: 
-                history = json.load(archive)
+                history = json.load(file)
             except:
                 history = []
 
@@ -42,21 +41,24 @@ def saveHistory(precoPor, precoDe, percent):
         json.dump(history, arq, indent=4)
 
 
-def savefromHistory(): 
-    with open(HISTORY_FILE, 'r') as file:
+def downloadHistory(): 
+    with open('history.json', 'r') as file:
         data = json.load(file)
 
     df = pd.DataFrame(data)
 
+    fileName = f'relatório{datetime.now().strftime('%d-%m-%Y%H-%M')}.xlsx'
+
     filepath = filedialog.asksaveasfilename(
-        filetypes=[('Excel files', '*.xlsx')],
+        initialfile=fileName,
+        filetypes=[('excel files', '*.xlsx')],
         defaultextension='.xlsx',
         title="salvar como"
     )
 
     if filepath:
         df.to_excel(filepath)
-        messagebox.showinfo('Sucesso', f'Arquivo salvo com sucesso em {filepath}')
+        messagebox.showinfo('Relatório Salvo', 'Arquivo salvo com sucesso')
     
 
 

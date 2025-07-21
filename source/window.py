@@ -2,7 +2,7 @@ import tkinter as tk
 from mode import Calculator
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
-from history import savefromHistory
+from history import downloadHistory
 
 '''
     initial class and functions calls
@@ -302,8 +302,7 @@ class Apliccation():
 
 
     def saveAs(self): 
-
-        self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= savefromHistory, font=("verdana", 8, "italic", 'bold'))
+        self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= downloadHistory, font=("verdana", 8, "italic", 'bold'))
         self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
     
 
