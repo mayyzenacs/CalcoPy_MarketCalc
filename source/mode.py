@@ -1,5 +1,5 @@
 from math import ceil
-from history import saveHistory
+from source.history import saveHistory
 from tkinter import messagebox
 
 class Calculator():
@@ -20,14 +20,14 @@ class Calculator():
         '''
         
         try:
-            if not value.strip():
-                return ''
+            priceValue = value.strip()
 
-            self.floatValue = float(value.strip())
+            self.floatValue = float(priceValue)
 
             if self.floatValue <= 0 or self.floatValue > 999999:
                 messagebox.showerror('erro', 'valor não permitido')
                 return ''
+            
             
             discounts = {
                 0: (0.15, '15%'),
@@ -62,19 +62,26 @@ class Calculator():
 
 
     ## CÁLCULO DO ESTOQUE FULL POR SEMANA
-    def mathFull(self, fullOption, fullWeeks): 
+    def mathFull(self, fullWeeks, salesNumber): 
         '''
             calculate how many items you need to send to full (a shipment method) uses the number of items that you sold in a certain number of weeks 
         '''
-        if fullWeeks == '':
-            return ''
+        print(type(salesNumber), type(fullWeeks))
 
+        
+            
         try:
-            fullVar = int(fullOption) * int(fullWeeks)
-            return(fullVar)
+            salesNumberInt = int(salesNumber)
+            
+            
+            if salesNumberInt <= 0:
+                print('sabonete')
+                
+            fullVar = int(salesNumber) * fullWeeks
+            return fullVar
         
         except ValueError:
-           messagebox.showerror('erro', 'Valor inválido')
+           messagebox.showerror('erro', 'Valor inválido para full')
            return ''
         
             

@@ -1,4 +1,5 @@
-from mode import Calculator
+from source.mode import Calculator
+import pytest
 
 calc = Calculator()
 
@@ -7,4 +8,4 @@ def test_calc():
     assert result == 46.0
 
 def test_mathFull ():
-    assert calc.mathFull(12, 6) == 72
+    assert calc.mathFull(6, 2) == 12

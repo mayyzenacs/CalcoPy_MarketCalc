@@ -4,4 +4,5 @@ source\__pycache__
 __pycache__
 mode.spec
 window.spec
-
+tests/__pycache__
+.pytest_cache
