@@ -160,10 +160,7 @@ class Apliccation():
         radioOption = self.radioChoice.get()
         entryValue = self.entryCalc.get().replace(",",".")   
         self.priceResult.set(self.classCalc.calc(radioOption, entryValue))
-
-        if self.priceResult:
-            print(type(self.priceResult))
-            self.offerLabel()
+            
 
     
     def offerLabel(self):
@@ -171,9 +168,12 @@ class Apliccation():
         self.offerText = tk.Label(self.frameBack, text="Oferta -3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offerText.place(relx=0.26, rely=0.73, relwidth=0.28, relheight=0.06, anchor="w")
 
-        self.valueOffer = tk.StringVar()
-        self.valueOffer.set(f"{self.classCalc.offer():.2f}")
-        self.offerReturn = tk.Label(self.frameBack, textvariable=self.valueOffer, font=("Verdana", 12, "bold"))
+
+    def offerLabel2(self):
+        valueOffer = tk.StringVar()
+        if self.classCalc.offer:
+            self.valueOffer.set(f"{self.classCalc.offer():.2f}")
+        self.offerReturn = tk.Label(self.frameBack, textvariable=valueOffer, font=("Verdana", 12, "bold"))
         self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
 
 
