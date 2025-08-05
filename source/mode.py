@@ -26,7 +26,7 @@ class Calculator():
 
             if self.floatValue <= 0 or self.floatValue > 999999:
                 messagebox.showerror('erro', 'valor não permitido')
-                return ''
+                return None
             
             
             discounts = {
@@ -48,11 +48,12 @@ class Calculator():
             outcome = ceil(originalValue * 100) / 100
 
             saveHistory(self.floatValue, outcome, percent)
+            
             return outcome
         
         except:
             messagebox.showerror('erro', 'Valor inválido')
-            return ''
+            return None
 
     def offer(self):
         '''
@@ -66,23 +67,21 @@ class Calculator():
         '''
             calculate how many items you need to send to full (a shipment method) uses the number of items that you sold in a certain number of weeks 
         '''
-        print(type(salesNumber), type(fullWeeks))
-
-        
             
         try:
             salesNumberInt = int(salesNumber)
             
             
             if salesNumberInt <= 0:
-                print('sabonete')
+                messagebox.showerror('erro', 'Valor inválido para full')
+                return None
                 
             fullVar = int(salesNumber) * fullWeeks
             return fullVar
         
         except ValueError:
            messagebox.showerror('erro', 'Valor inválido para full')
-           return ''
+           return None
         
             
 

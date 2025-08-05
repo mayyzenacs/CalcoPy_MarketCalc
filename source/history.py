@@ -42,7 +42,7 @@ def saveHistory(precoPor, precoDe, percent):
 
 
 def downloadHistory(): 
-    with open('history.json', 'r') as file:
+    with open(HISTORY_FILE, 'r') as file:
         data = json.load(file)
 
     df = pd.DataFrame(data)

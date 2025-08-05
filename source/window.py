@@ -159,22 +159,24 @@ class Apliccation():
         '''
         radioOption = self.radioChoice.get()
         entryValue = self.entryCalc.get().replace(",",".")   
-        self.priceResult.set(self.classCalc.calc(radioOption, entryValue))
-            
+        calcValue = self.classCalc.calc(radioOption, entryValue)
+        calcOffer = self.classCalc.offer()
+        self.priceResult.set(calcValue)
+        self.valueOffer.set(calcOffer)
 
-    
+        if calcValue is None or calcOffer is None:
+            self.priceResult.set('')
+            self.valueOffer.set('')
+
     def offerLabel(self):
-
+        self.valueOffer = tk.StringVar()
+        self.offerReturn = tk.Label(self.frameBack, textvariable=self.valueOffer, font=("Verdana", 12, "bold"))
+        self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
+    
         self.offerText = tk.Label(self.frameBack, text="Oferta -3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offerText.place(relx=0.26, rely=0.73, relwidth=0.28, relheight=0.06, anchor="w")
 
 
-    def offerLabel2(self):
-        valueOffer = tk.StringVar()
-        if self.classCalc.offer:
-            self.valueOffer.set(f"{self.classCalc.offer():.2f}")
-        self.offerReturn = tk.Label(self.frameBack, textvariable=valueOffer, font=("Verdana", 12, "bold"))
-        self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
 
 
     '''
@@ -314,7 +316,7 @@ class Apliccation():
 
         self.entryCalc.delete(0, tk.END)
         self.valueOffer.set('')
-        self.result.set('')
+        self.priceResult.set('')
         self.placefullResult.set('')
         self.entryFullWeek.delete(0, tk.END)
         
