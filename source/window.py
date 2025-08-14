@@ -9,7 +9,7 @@ from PIL import Image, ImageTk
 '''
 class Apliccation(): 
     '''
-        Main class for the CalcoPy MarketCalc application.
+        Main class 
         This class handles the creation and management of the Tkinter GUI,
         including widgets, layouts, and event handling.
     '''
@@ -65,20 +65,20 @@ class Apliccation():
             tittles and strings from main frame
         '''
         self.root.title("CalcoPy MarketCalc by Mayra Pereira")
-        self.str = tk.Label(
-                        self.frameBack, 
-                        text="CalcoPy MarketCalc Calculadora | Preço Comercial e Estoque", 
-                        bg="#4F4F4F", 
-                        font=("verdana", 9, "bold")
-                        )
+
+        self.str = tk.Label(self.frameBack, text="CalcoPy MarketCalc Calculadora | Preço Comercial e Estoque",bg="#4F4F4F", font=("verdana", 9, "bold"))
         self.str.place(relheight=0.09, relwidth=1, relx=0.5, rely=0.037, anchor=tk.CENTER)
-
-
-    def buttons_main_frame(self): 
 
         self.choice = tk.Label(self.frameBack, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.choice.place(relheight=0.08, relwidth=1, relx=0.5, rely=0.10, anchor=tk.CENTER)
 
+
+    def buttons_main_frame(self): 
+        '''
+            sets up the main buttons for the frame
+            discount buttons options 
+            calc main button 
+        ''' 
         discountOptions = [
             ('15%', 0, 0.19),
             ('25%', 1, 0.5),
@@ -99,32 +99,20 @@ class Apliccation():
                             )
             self.check.place(relheight= 0.12, relwidth=0.22, relx=relxps, rely=0.19, anchor=tk.CENTER)
             
-        
-        self.entryCalc = tk.Entry(
-                        self.frameBack, 
-                        bd=0, 
-                        font=("verdana", 20, "bold"), justify="center"
-                        )
-        self.entryCalc.icursor(0)
-        self.entryCalc.place(relheight= 0.12 ,relwidth=0.30, relx=0.24, rely=0.33)
-        
-        self.entryCalc.bind("<Return>", lambda event: self.take())
-
         self.entryText = tk.Label(self.frameBack, text="Preço Por", bg="#4F4F4F", font=("Verdana", 15, "bold"))
         self.entryText.place(relheight=0.09, relwidth=1, relx=0.38, rely=0.28, anchor=tk.CENTER)
 
         self.calcBt = tk.Button(self.frameBack, text="Calcular", bg="#DCDCDC", bd=0, command=self.take, font=("verdana", 11, "bold", 'italic'), justify='center')
         self.calcBt.place(relx=0.052, rely=0.33, relheight=0.12, relwidth=0.16)
+        
+        self.entryCalc = tk.Entry(self.frameBack,bd=0, font=("verdana", 20, "bold"), justify="center")
+        self.entryCalc.icursor(0)
+        self.entryCalc.place(relheight= 0.12 ,relwidth=0.30, relx=0.24, rely=0.33)
+        self.entryCalc.bind("<Return>", lambda event: self.take())
+
 
     def label(self): 
-        label = tk.Label(
-                        self.frameBack, 
-                        textvariable='PREÇO DE',
-                        relief=tk.RAISED, 
-                        bg="#4F4F4F",
-                        font=("verdana", 15, "bold"),
-                        bd = 0
-                    )
+        label = tk.Label(self.frameBack, textvariable='PREÇO DE', relief=tk.RAISED, bg="#4F4F4F",font=("verdana", 15, "bold"),bd = 0)
         label.place(relx=0.54, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
 
         self.labelReturn = tk.Label(self.frameBack, textvariable = self.priceResult, font=("verdana", 21, "bold"), fg='blue')
