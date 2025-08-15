@@ -25,13 +25,13 @@ class Apliccation():
         self.root = root
         self.classCalc = Calculator()
         self.main_frame()
-        self.buttons_main_frame()
+        self.buttons_calc_main_frame()
+        self.calc_result_frame()
         self.delButton()
-        self.label()
-        self.copyButton()
-        self.copyLabel()
-        self.offerLabel()
-        self.fullLayout()
+        self.copy_Button()
+        self.copy_Label()
+        self.offer_Label()
+        self.full_Layout()
         self.saveAs()
     
 
@@ -73,7 +73,7 @@ class Apliccation():
         self.choice.place(relheight=0.08, relwidth=1, relx=0.5, rely=0.10, anchor=tk.CENTER)
 
 
-    def buttons_main_frame(self): 
+    def buttons_calc_main_frame(self): 
         '''
             sets up the main buttons for the frame
             discount buttons options 
@@ -102,16 +102,19 @@ class Apliccation():
         self.entryText = tk.Label(self.frameBack, text="Preço Por", bg="#4F4F4F", font=("Verdana", 15, "bold"))
         self.entryText.place(relheight=0.09, relwidth=1, relx=0.38, rely=0.28, anchor=tk.CENTER)
 
-        self.calcBt = tk.Button(self.frameBack, text="Calcular", bg="#DCDCDC", bd=0, command=self.take, font=("verdana", 11, "bold", 'italic'), justify='center')
+        self.calcBt = tk.Button(self.frameBack, text="Calcular", bg="#DCDCDC", bd=0, command=self.taking_entries, font=("verdana", 11, "bold", 'italic'), justify='center')
         self.calcBt.place(relx=0.052, rely=0.33, relheight=0.12, relwidth=0.16)
         
         self.entryCalc = tk.Entry(self.frameBack,bd=0, font=("verdana", 20, "bold"), justify="center")
-        self.entryCalc.icursor(0)
         self.entryCalc.place(relheight= 0.12 ,relwidth=0.30, relx=0.24, rely=0.33)
+        self.entryCalc.icursor(0)
         self.entryCalc.bind("<Return>", lambda event: self.take())
 
 
-    def label(self): 
+    def calc_result_frame(self): 
+        '''
+            getting the result to show in the frame
+        '''
         label = tk.Label(self.frameBack, textvariable='PREÇO DE', relief=tk.RAISED, bg="#4F4F4F",font=("verdana", 15, "bold"),bd = 0)
         label.place(relx=0.54, rely=0.45, relheight= 0.1 ,relwidth=0.31, anchor='ne')
 
@@ -121,17 +124,19 @@ class Apliccation():
     '''
         collecting entries
     '''
-    def take(self):
+    def taking_entries(self):
         '''
             'radioOption' get the radio choice
-            'entryValue' get the first entry 'precoPor'
-            'returnResult' call class Calculator to pass the values and return the result from module mode.py
+            'entryValueCalc' get the first entry 'precoPor'
+            'result' call class Calculator to pass the values and return the result from module mode.py
         '''
         radioOption = self.radioChoice.get()
-        entryValue = self.entryCalc.get().replace(",",".") 
+        entryValueCalc = self.entryCalc.get().replace(",",".") 
 
-        result = self.classCalc.calc(radioOption, entryValue)
-
+        result = self.classCalc.calc(radioOption, entryValueCalc)
+        '''
+            check if result isn't none to set specify values and call offer
+        '''
         if result is not None: 
             offerPrice = self.classCalc.offer()
             self.valueOffer.set(f"{offerPrice:.2f}")
@@ -141,30 +146,34 @@ class Apliccation():
             self.priceResult.set('')
 
     
-    def offerLabel(self):
-
+    def offer_Label(self):
+        '''
+            offer label to make calc to set a offer -3%
+        '''
         self.offerText = tk.Label(self.frameBack, text="Oferta -3%", bg="#4F4F4F", font=("Verdana", 12, "bold"))
         self.offerText.place(relx=0.26, rely=0.73, relwidth=0.28, relheight=0.06, anchor="w")
 
         self.offerReturn = tk.Label(self.frameBack, textvariable= self.valueOffer, font=("Verdana", 12, "bold"))
         self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
         
-
-
     '''
         all the full label interface below
     '''
-    def fullLayout(self): 
+    def full_Layout(self): 
 
-        self.fullText = tk.Label(
-                        self.frameBack, 
-                        text="Semanas", 
-                        bg="#4F4F4F", 
-                        font=("Verdana", 11, "bold")
-                        )
+        '''
+            strings from full label
+        '''
+        self.fullText = tk.Label(self.frameBack, text="Semanas", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.fullText.place(relx=0.65, rely=0.28, relwidth=0.24, relheight=0.07, anchor="w")
-        
+
         self.fullChoice.set(6)
+
+        self.fullTextWeek = tk.Label(self.frameBack, text="Vendas 7 dias", bg="#4F4F4F", font=("verdana", 10, "bold"))
+        self.fullTextWeek.place(relx=0.62, rely=0.44, relwidth=0.31, relheight=0.07, anchor="w")
+
+        self.fullTextResult = tk.Label(self.frameBack, text="Qtd. a enviar", bg="#4F4F4F", font=("verdana", 10, "bold"))
+        self.fullTextResult.place(relx=0.62, rely=0.60, relwidth=0.31, relheight=0.07, anchor="w")
 
         fullOptionsWeek = [
             ('5', 5, 0.64),
@@ -186,39 +195,25 @@ class Apliccation():
                             )
             self.fullOption.place(relheight=0.09, relwidth=0.1, relx=relxps, rely=0.37, anchor=tk.CENTER)
 
-        
-        self.fullTextWeek = tk.Label(
-                        self.frameBack, 
-                        text="Vendas 7 dias", 
-                        bg="#4F4F4F", 
-                        font=("verdana", 10, "bold")
-                        )
-        self.fullTextWeek.place(relx=0.62, rely=0.44, relwidth=0.31, relheight=0.07, anchor="w")
+        '''
+            defining calc full week button and others label
+        '''
 
-        self.fullTextResult = tk.Label(
-                        self.frameBack, 
-                        text="Qtd. a enviar", 
-                        bg="#4F4F4F", 
-                        font=("verdana", 10, "bold")
-                        )
-        self.fullTextResult.place(relx=0.62, rely=0.60, relwidth=0.31, relheight=0.07, anchor="w")
-
-        self.entryFullWeek = tk.Entry(
-                        self.frameBack, 
-                        bd=0, 
-                        font=("verdana", 15, "bold"), justify="center", fg='green'
-                        )
+        self.entryFullWeek = tk.Entry(self.frameBack, bd=0, font=("verdana", 15, "bold"), justify="center", fg='green')
         self.entryFullWeek.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.52, anchor=tk.CENTER)
 
-        self.entryFullWeek.bind("<Return>", lambda event: self.fullCalc())
+        self.entryFullWeek.bind("<Return>", lambda event: self.full_Calc())
 
-        self.calcBtFull = tk.Button(self.frameBack, text="Full", bg="#DCDCDC", bd=0, command=self.fullCalc, font=("verdana", 12, "bold", 'italic'), justify='center')
+        self.calcBtFull = tk.Button(self.frameBack, text="Full", bg="#DCDCDC", bd=0, command=self.full_Calc, font=("verdana", 12, "bold", 'italic'), justify='center')
         self.calcBtFull.place(relx=0.706, rely=0.76, relheight=0.09, relwidth=0.13)
 
         self.fullResult = tk.Label(self.frameBack, textvariable= self.placefullResult, font=("verdana", 15, "bold"), fg="blue")
         self.fullResult.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.68, anchor=tk.CENTER)
 
-    def fullCalc(self):
+    def full_Calc(self):
+        '''
+            getting values from full to do the calc
+        '''
         
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
@@ -226,8 +221,11 @@ class Apliccation():
         self.placefullResult.set(self.classCalc.mathFull(getFullChoice, weekEntry))
 
 
-
-    def copyButton(self):
+    def copy_Button(self):
+        '''
+            copy button working defined
+            checking if copy is true to avoid errors
+        '''
         copy = self.priceResult.get()
         if copy: 
             self.root.clipboard_clear()
@@ -236,42 +234,44 @@ class Apliccation():
             self.root.after(1000, lambda: self.copyMsg.config(text=""))
 
 
-    def copyLabel(self):
-        self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copyButton, font=("verdana", 11, "italic", 'bold'))
+    def copy_Label(self):
+        '''
+            copy label with copy string and defining copy button 
+        '''
+        self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_Button, font=("verdana", 11, "italic", 'bold'))
         self.copyBt.place(relx=0.054, rely=0.56, relheight=0.12, relwidth=0.16)
 
         self.copyMsg = tk.Label(self.frameBack, text="", bg="#4F4F4F", font=("verdana", 8, 'italic'))
         self.copyMsg.place(relx=0.01, rely=0.69, relheight=0.05, relwidth=0.25)
 
-        
-
-
 
     def saveAs(self): 
+        '''
+            setting export button to save excel file history
+        '''
         self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= downloadHistory, font=("verdana", 8, "italic", 'bold'))
         self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
     
 
-    def delButton(self):
-        
-        self.del_bt = tk.Button(
-                        self.frameBack, 
-                        text="Clear", 
-                        bd=1, 
-                        bg="#4F4F4F",
-                        command= self.clear,
-                        font=("verdana", 10, "italic", 'bold')
-                        )
-        self.del_bt.place(relheight=0.08, relwidth=0.10,relx=0.085, rely=0.76)
-
-
     def clear(self):
-
+        '''
+            delet button function
+        '''
         self.entryCalc.delete(0, tk.END)
         self.valueOffer.set('')
         self.priceResult.set('')
         self.placefullResult.set('')
         self.entryFullWeek.delete(0, tk.END)
+
+
+    def delButton(self):
+        '''
+            setting delet button to clean all labels in frame
+        '''
+        self.del_bt = tk.Button(self.frameBack, text="Clear", bd=1, bg="#4F4F4F", command= self.clear, font=("verdana", 10, "italic", 'bold'))
+        self.del_bt.place(relheight=0.08, relwidth=0.10,relx=0.085, rely=0.76)
+
+
         
         
 if __name__ == "__main__":
