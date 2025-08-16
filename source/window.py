@@ -108,7 +108,7 @@ class Apliccation():
         self.entryCalc = tk.Entry(self.frameBack,bd=0, font=("verdana", 20, "bold"), justify="center")
         self.entryCalc.place(relheight= 0.12 ,relwidth=0.30, relx=0.24, rely=0.33)
         self.entryCalc.icursor(0)
-        self.entryCalc.bind("<Return>", lambda event: self.take())
+        self.entryCalc.bind("<Return>", lambda event: self.taking_entries())
 
 
     def calc_result_frame(self): 
