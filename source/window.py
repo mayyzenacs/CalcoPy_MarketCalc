@@ -3,6 +3,15 @@ from source.mode import Calculator
 from source.history import downloadHistory
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
+import sys
+import os
+
+def resourcePath(relative):
+    try:
+        base = sys._MEIPASS
+    except Exception:
+        base = os.path.abspath('.')
+    return os.path.join(base, relative)
 
 '''
     initial class and functions calls
@@ -47,13 +56,18 @@ class Apliccation():
         '''
             defining logo and icon
         '''
-        self.bgImage = Image.open('source/img/logo.png')
+        logoPath = resourcePath('source/img/logo.png')
+        self.bgImage = Image.open(logoPath)
         self.resizedImage = self.bgImage.resize((500,180))
         self.imageB = ImageTk.PhotoImage(self.resizedImage)
-        self.img = PhotoImage(file='source/img/icon.png')
-        self.root.iconphoto(False, self.img)
         self.bgImageLabel = tk.Label(self.root, image=self.imageB, bd=0, bg="#000000")
         self.bgImageLabel.place(relheight=0.21, relwidth=1, anchor=tk.CENTER, relx=0.5, rely=0.1)
+
+        iconPath = resourcePath('source/img/icon.png')
+        self.img = PhotoImage(file=iconPath)
+        self.root.iconphoto(False, self.img)
+
+    
 
         '''
             set back frame
@@ -71,6 +85,8 @@ class Apliccation():
 
         self.choice = tk.Label(self.frameBack, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.choice.place(relheight=0.08, relwidth=1, relx=0.5, rely=0.10, anchor=tk.CENTER)
+
+        
 
 
     def buttons_calc_main_frame(self): 
