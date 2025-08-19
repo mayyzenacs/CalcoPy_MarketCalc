@@ -6,6 +6,10 @@ from PIL import Image, ImageTk
 import sys
 import os
 
+'''
+    Gets the absolute path to a resource, working for both
+    development and bundled PyInstaller executables.
+'''
 def resourcePath(relative):
     try:
         base = sys._MEIPASS
@@ -46,16 +50,11 @@ class Apliccation():
 
     def main_frame(self):
 
-        '''
-            main frame, tittle, box size
-        '''
         self.root.configure(background= "#363636")
         self.root.geometry("480x450")
         self.root.resizable(False, False)
 
-        '''
-            defining logo and icon
-        '''
+      
         logoPath = resourcePath('source/img/logo.png')
         self.bgImage = Image.open(logoPath)
         self.resizedImage = self.bgImage.resize((500,180))
@@ -67,11 +66,6 @@ class Apliccation():
         self.img = PhotoImage(file=iconPath)
         self.root.iconphoto(False, self.img)
 
-    
-
-        '''
-            set back frame
-        '''
         self.frameBack = tk.Frame(self.root, relief="solid", bg="#4F4F4F")
         self.frameBack.place(relx=0.5, rely=0.59, relheight= 0.78,relwidth=0.95, anchor=tk.CENTER)
 
@@ -91,9 +85,10 @@ class Apliccation():
 
     def buttons_calc_main_frame(self): 
         '''
-            sets up the main buttons for the frame
-            discount buttons options 
-            calc main button 
+            Sets up the primary widgets for the main calculation frame.
+
+            This includes the radio buttons for discount options, 
+            the price input field, and the main 'Calculate' button.
         ''' 
         discountOptions = [
             ('15%', 0, 0.19),
@@ -142,9 +137,8 @@ class Apliccation():
     '''
     def taking_entries(self):
         '''
-            'radioOption' get the radio choice
-            'entryValueCalc' get the first entry 'precoPor'
-            'result' call class Calculator to pass the values and return the result from module mode.py
+            Handles the calculation process when the main button is clicked or 'Enter' is pressed.
+            Retrieves user input, performs the calculation, and updates the result labels.
         '''
         radioOption = self.radioChoice.get()
         entryValueCalc = self.entryCalc.get().replace(",",".") 
