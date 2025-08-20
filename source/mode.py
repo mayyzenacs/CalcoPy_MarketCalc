@@ -1,8 +1,11 @@
 from math import ceil
-from history import saveHistory
+from source.history import saveHistory
 from tkinter import messagebox
 
 class Calculator():
+    '''
+        Performs various calculations related to e-commerce pricing and stock management.
+    '''
 
     def __init__(self):
         '''
@@ -13,21 +16,25 @@ class Calculator():
     
     def calc(self, option, value):
         '''
-            catch option and value from window.py
-            verify if value is none to prevent errors
-            set value(entryValue) as a float
-            identify the radioOption(option) and asign it with a percent
+            Calculates the original price based on a user-selected discount.
+
+            Args:
+                option (int): The selected discount option (0, 1, or 2).
+                value (str): The price input from the user.
+
+            Returns:
+                float: The calculated original price, or None on error.
         '''
         
         try:
-            if not value.strip():
-                return ''
+            priceValue = value.strip()
 
-            self.floatValue = float(value.strip())
+            self.floatValue = float(priceValue)
 
             if self.floatValue <= 0 or self.floatValue > 999999:
                 messagebox.showerror('erro', 'valor não permitido')
-                return ''
+                return None
+            
             
             discounts = {
                 0: (0.15, '15%'),
@@ -41,41 +48,51 @@ class Calculator():
                 messagebox.showerror('erro','Opção inválida')
     
             '''
-                basic calc is how percent works in real life, outcome is a math ceil to round the result and avoid lack 0,1 cent in the operation
+                Reverse the discount calculation to find the original price
+                Round the result up to two decimal places to avoid cents loss.
             '''    
             originalValue = self.floatValue / (1 - discount)
 
             outcome = ceil(originalValue * 100) / 100
 
             saveHistory(self.floatValue, outcome, percent)
+            
             return outcome
         
         except:
             messagebox.showerror('erro', 'Valor inválido')
-            return ''
+            return None
 
     def offer(self):
         '''
-            calcule the offer price from a value, it's useful for e-commerce that uses mercado livre and participate from recurrent offers
+            Calculates an offer price by applying a 3% discount to the current value.
         '''
         return self.floatValue - (self.floatValue * 0.03)
-    
+
 
     ## CÁLCULO DO ESTOQUE FULL POR SEMANA
-    def mathFull(self, fullOption, fullWeeks): 
+    def mathFull(self, fullWeeks, salesNumber): 
         '''
-            calculate how many items you need to send to full (a shipment method) uses the number of items that you sold in a certain number of weeks 
+            Calculates the number of items to send to the 'Full' center.
+            Args:
+            fullWeeks (int): The number of weeks for the stock calculation.
+            salesNumber (str): The number of items sold in the last 7 days.
         '''
-        if fullWeeks == '':
-            return ''
-
+            
         try:
-            fullVar = int(fullOption) * int(fullWeeks)
-            return(fullVar)
+            salesNumberInt = int(salesNumber)
+            
+            
+            if salesNumberInt <= 0:
+                messagebox.showerror('erro', 'Valor inválido para full')
+                return None
+                
+            fullVar = int(salesNumber) * fullWeeks
+            return fullVar
         
         except ValueError:
-           messagebox.showerror('erro', 'Valor inválido')
-           return ''
+           messagebox.showerror('erro', 'Valor inválido para full')
+           return None
         
             
 

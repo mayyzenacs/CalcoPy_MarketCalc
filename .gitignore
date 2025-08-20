@@ -1,7 +1,8 @@
 
 source/__pycache__/mode.cpython-312.pyc
+source\__pycache__
 __pycache__
 mode.spec
 window.spec
-build
-
+tests/__pycache__
+.pytest_cache
