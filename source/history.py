@@ -27,7 +27,7 @@ def saveHistory(precoPor, precoDe, percent):
         with open(HISTORY_FILE, 'r') as file: 
             try: 
                 history = json.load(file)
-            except:
+            except json.JSONDecodeError:
                 history = []
 
     if len(history) >= 50:
@@ -45,12 +45,15 @@ def saveHistory(precoPor, precoDe, percent):
 
 
 def downloadHistory(): 
+    '''
+        Exports the calculation history to an Excel file.
+    '''
     with open(HISTORY_FILE, 'r') as file:
         data = json.load(file)
 
     df = pd.DataFrame(data)
 
-    fileName = f'relatório{datetime.now().strftime('%d-%m-%Y%H-%M')}.xlsx'
+    fileName = f'relatório{datetime.now().strftime('%d-%m-%Y-%H-%M')}.xlsx'
 
     filepath = filedialog.asksaveasfilename(
         initialfile=fileName,

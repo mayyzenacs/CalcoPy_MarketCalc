@@ -54,7 +54,6 @@ class Apliccation():
         self.root.geometry("480x450")
         self.root.resizable(False, False)
 
-      
         logoPath = resourcePath('source/img/logo.png')
         self.bgImage = Image.open(logoPath)
         self.resizedImage = self.bgImage.resize((500,180))
@@ -79,8 +78,6 @@ class Apliccation():
 
         self.choice = tk.Label(self.frameBack, text="Selecione qual porcentagem utilizar", bg="#4F4F4F", font=("Verdana", 11, "bold"))
         self.choice.place(relheight=0.08, relwidth=1, relx=0.5, rely=0.10, anchor=tk.CENTER)
-
-        
 
 
     def buttons_calc_main_frame(self): 
@@ -132,13 +129,13 @@ class Apliccation():
         self.labelReturn = tk.Label(self.frameBack, textvariable = self.priceResult, font=("verdana", 21, "bold"), fg='blue')
         self.labelReturn.place(relx=0.24, rely=0.55, relheight=0.14, relwidth=0.30)        
 
+
     '''
         collecting entries
     '''
     def taking_entries(self):
         '''
             Handles the calculation process when the main button is clicked or 'Enter' is pressed.
-            Retrieves user input, performs the calculation, and updates the result labels.
         '''
         radioOption = self.radioChoice.get()
         entryValueCalc = self.entryCalc.get().replace(",",".") 
@@ -165,7 +162,8 @@ class Apliccation():
 
         self.offerReturn = tk.Label(self.frameBack, textvariable= self.valueOffer, font=("Verdana", 12, "bold"))
         self.offerReturn.place(relx=0.24, rely=0.81, relwidth=0.30, relheight=0.07, anchor="w")
-        
+
+
     '''
         all the full label interface below
     '''
@@ -208,7 +206,6 @@ class Apliccation():
         '''
             defining calc full week button and others label
         '''
-
         self.entryFullWeek = tk.Entry(self.frameBack, bd=0, font=("verdana", 15, "bold"), justify="center", fg='green')
         self.entryFullWeek.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.52, anchor=tk.CENTER)
 
@@ -220,11 +217,11 @@ class Apliccation():
         self.fullResult = tk.Label(self.frameBack, textvariable= self.placefullResult, font=("verdana", 15, "bold"), fg="blue")
         self.fullResult.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.68, anchor=tk.CENTER)
 
+
     def full_Calc(self):
         '''
-            getting values from full to do the calc
+            getting values to calc full valuess
         '''
-        
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
         
@@ -233,8 +230,9 @@ class Apliccation():
 
     def copy_Button(self):
         '''
-            copy button working defined
-            checking if copy is true to avoid errors
+            Copies the current price result to the clipboard.
+            This method retrieves the value from the price result variable,
+            copies it to the system clipboard, and displays a temporary confirmation message to the user.
         '''
         copy = self.priceResult.get()
         if copy: 
@@ -246,7 +244,7 @@ class Apliccation():
 
     def copy_Label(self):
         '''
-            copy label with copy string and defining copy button 
+            Sets up copy label
         '''
         self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_Button, font=("verdana", 11, "italic", 'bold'))
         self.copyBt.place(relx=0.054, rely=0.56, relheight=0.12, relwidth=0.16)
@@ -257,7 +255,7 @@ class Apliccation():
 
     def saveAs(self): 
         '''
-            setting export button to save excel file history
+            Sets up the 'Export' button to allow saving the calculation history.
         '''
         self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= downloadHistory, font=("verdana", 8, "italic", 'bold'))
         self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
@@ -265,7 +263,7 @@ class Apliccation():
 
     def clear(self):
         '''
-            delet button function
+            Clears all input fields and resets the result labels.
         '''
         self.entryCalc.delete(0, tk.END)
         self.valueOffer.set('')
@@ -276,13 +274,11 @@ class Apliccation():
 
     def delButton(self):
         '''
-            setting delet button to clean all labels in frame
+            Sets up 'clear' button to clean labels
         '''
         self.del_bt = tk.Button(self.frameBack, text="Clear", bd=1, bg="#4F4F4F", command= self.clear, font=("verdana", 10, "italic", 'bold'))
         self.del_bt.place(relheight=0.08, relwidth=0.10,relx=0.085, rely=0.76)
 
-
-        
         
 if __name__ == "__main__":
     root = tk.Tk()
