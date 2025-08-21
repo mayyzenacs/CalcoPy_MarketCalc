@@ -93,7 +93,7 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.  
 
 ## 🖥 Como usar  
 
-- Baixe o executável da CalcoPy MktCalc [aqui](github.com/mayyzenacs/CalcoPy_MarketCalc/releases/tag/python)
+- Baixe o último executável da CalcoPy MktCalc nas releases.
 
 ⚠ Aviso: o programa não possui licença. O *Windows Defender* pode detectar um falso positivo — adicione às exceções caso necessário. CalcoPy é totalmente segura e de código aberto.
 
@@ -159,9 +159,9 @@ O *CalcoPy MktCalc* é uma ferramenta prática para vendedores de marketplaces, 
 
 1. Crie e ative um ambiente virtual:  
 
-   ```bash
-
-   python -m venv venv
+ ```
+  python -m venv venv
+```
 
    source venv/bin/activate   # Linux/Mac
 
