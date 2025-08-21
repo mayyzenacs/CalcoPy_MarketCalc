@@ -224,8 +224,12 @@ class Apliccation():
         '''
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
-        
-        self.placefullResult.set(self.classCalc.mathFull(getFullChoice, weekEntry))
+
+        fullResult = self.classCalc.mathFull(getFullChoice, weekEntry)
+        if fullResult is not None:
+            self.placefullResult.set(fullResult)
+        else:
+            self.placefullResult.set('')
 
 
     def copy_Button(self):
