@@ -141,13 +141,6 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.  
 
 ---
 
-  
-
-✨ *Resumo:*  
-
-O *CalcoPy MktCalc* é uma ferramenta prática para vendedores de marketplaces, ajudando na *precificação estratégica* e no *planejamento de estoque* de forma rápida e automatizada.
-
-  
 
 ## Dev Infos
 
@@ -209,3 +202,5 @@ users\user_name\appData\local
 - Rode pelo terminal 'python -m source.window'
 
   
+
+  ---
