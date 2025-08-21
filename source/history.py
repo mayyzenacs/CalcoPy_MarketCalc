@@ -10,7 +10,9 @@ APPDATA_DIR = os.getenv('LOCALAPPDATA')
 HISTORY_DIR = os.path.join(APPDATA_DIR, 'CalcoPy MarketCalc')
 HISTORY_FILE = os.path.join(HISTORY_DIR, 'history.json')
 
+
 os.makedirs(HISTORY_DIR, exist_ok=True)
+
 
 def saveHistory(precoPor, precoDe, percent):
     '''

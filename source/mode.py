@@ -2,6 +2,7 @@ from math import ceil
 from source.history import saveHistory
 from tkinter import messagebox
 
+
 class Calculator():
     '''
         Performs various calculations related to e-commerce pricing and stock management.
