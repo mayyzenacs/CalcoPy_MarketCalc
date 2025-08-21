@@ -17,6 +17,7 @@ def resourcePath(relative):
         base = os.path.abspath('.')
     return os.path.join(base, relative)
 
+
 '''
     initial class and functions calls
 '''
