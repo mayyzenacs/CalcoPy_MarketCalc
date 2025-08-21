@@ -159,31 +159,32 @@ O *CalcoPy MktCalc* é uma ferramenta prática para vendedores de marketplaces, 
 
 1. Crie e ative um ambiente virtual:  
 
- ```
-  python -m venv venv
 ```
-
-   source venv/bin/activate   # Linux/Mac
-
-   venv\Scripts\activate      # Windows
-
+python -m venv venv
+```
+```
+source venv/bin/activate   # Linux/Mac
+```
+```
+venv\Scripts\activate      # Windows
+```
 2. Instale as dependências:
 
-   ```bash
-
-    pip install -r requirements.txt
+```
+pip install -r requirements.txt
+```
 
 3. Rode o programa:
 
-    ```bash
-
-    python -m source.window
+```
+python -m source.window
+```
 
 O histórico de operaçoes (history.json) é salvo automaticamente em:
 
-    ```bash
-
-    users\user_name\appData\local
+```
+users\user_name\appData\local
+```
 
   
 
@@ -199,10 +200,12 @@ O histórico de operaçoes (history.json) é salvo automaticamente em:
 
 ### no module named 'pandas'
 
-- Rode dentro de um ambiente virtual e instale diretamente o pandas com pip install pandas
+- Rode dentro de um ambiente virtual e instale diretamente o pandas com 'pip install pandas'
 
   
 
 ### no module named source
 
-- Rode pelo terminal python -m source.window
+- Rode pelo terminal 'python -m source.window'
+
+  
