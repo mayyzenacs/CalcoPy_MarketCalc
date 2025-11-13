@@ -1,4 +1,4 @@
-from source.mode import Calculator
+from src.math_mode import Calculator
 import pytest
 
 calc = Calculator()
@@ -6,6 +6,10 @@ calc = Calculator()
 def test_calc():
     result = calc.calc(2, '29.9')  
     assert result == 46.0
+
+def test_calc_aritmetic(): 
+    result = calc.calc(2, '34.9')
+    assert result == 53.69
 
 def test_calc_invalid_string():
     result = calc.calc(0, 'abc')

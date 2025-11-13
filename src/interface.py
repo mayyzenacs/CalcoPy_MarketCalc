@@ -1,6 +1,6 @@
 import tkinter as tk
-from source.mode import Calculator
-from source.history import downloadHistory
+from src.math_mode import Calculator
+from src.history import download_archive
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
 import sys
@@ -30,23 +30,23 @@ class Apliccation():
     def __init__(self):
 
         self.priceResult = tk.StringVar()
-        self.placefullResult = tk.StringVar()
+        self.placeFullResult = tk.StringVar()
         self.valueOffer = tk.StringVar()
         
         self.fullChoice = tk.IntVar()
         self.radioChoice = tk.IntVar()
 
         self.root = root
-        self.classCalc = Calculator()
+        self.calc_class = Calculator()
         self.main_frame()
         self.buttons_calc_main_frame()
         self.calc_result_frame()
-        self.delButton()
-        self.copy_Button()
-        self.copy_Label()
-        self.offer_Label()
-        self.full_Layout()
-        self.saveAs()
+        self.del_button()
+        self.copy_button()
+        self.copy_label()
+        self.offer_label()
+        self.full_layout()
+        self.save_as()
     
 
     def main_frame(self):
@@ -141,12 +141,12 @@ class Apliccation():
         radioOption = self.radioChoice.get()
         entryValueCalc = self.entryCalc.get().replace(",",".") 
 
-        result = self.classCalc.calc(radioOption, entryValueCalc)
+        result = self.calc_class.calc(radioOption, entryValueCalc)
         '''
             check if result isn't none to set specify values and call offer
         '''
         if result is not None: 
-            offerPrice = self.classCalc.offer()
+            offerPrice = self.calc_class.offer()
             self.valueOffer.set(f"{offerPrice:.2f}")
             self.priceResult.set(result)
         else:
@@ -154,7 +154,7 @@ class Apliccation():
             self.priceResult.set('')
 
     
-    def offer_Label(self):
+    def offer_label(self):
         '''
             offer label to make calc to set a offer -3%
         '''
@@ -168,7 +168,7 @@ class Apliccation():
     '''
         all the full label interface below
     '''
-    def full_Layout(self): 
+    def full_layout(self): 
 
         '''
             strings from full label
@@ -215,7 +215,7 @@ class Apliccation():
         self.calcBtFull = tk.Button(self.frameBack, text="Full", bg="#DCDCDC", bd=0, command=self.full_Calc, font=("verdana", 12, "bold", 'italic'), justify='center')
         self.calcBtFull.place(relx=0.706, rely=0.76, relheight=0.09, relwidth=0.13)
 
-        self.fullResult = tk.Label(self.frameBack, textvariable= self.placefullResult, font=("verdana", 15, "bold"), fg="blue")
+        self.fullResult = tk.Label(self.frameBack, textvariable= self.placeFullResult, font=("verdana", 15, "bold"), fg="blue")
         self.fullResult.place(relheight= 0.089 ,relwidth=0.19, relx=0.77, rely=0.68, anchor=tk.CENTER)
 
 
@@ -226,14 +226,14 @@ class Apliccation():
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
 
-        fullResult = self.classCalc.mathFull(getFullChoice, weekEntry)
+        fullResult = self.calc_class.mathFull(getFullChoice, weekEntry)
         if fullResult is not None:
-            self.placefullResult.set(fullResult)
+            self.placeFullResult.set(fullResult)
         else:
-            self.placefullResult.set('')
+            self.placeFullResult.set('')
 
 
-    def copy_Button(self):
+    def copy_button(self):
         '''
             Copies the current price result to the clipboard.
             This method retrieves the value from the price result variable,
@@ -247,22 +247,22 @@ class Apliccation():
             self.root.after(1000, lambda: self.copyMsg.config(text=""))
 
 
-    def copy_Label(self):
+    def copy_label(self):
         '''
             Sets up copy label
         '''
-        self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_Button, font=("verdana", 11, "italic", 'bold'))
+        self.copyBt = tk.Button(self.frameBack, text="Copiar", bg="#DCDCDC", bd=0, command= self.copy_button, font=("verdana", 11, "italic", 'bold'))
         self.copyBt.place(relx=0.054, rely=0.56, relheight=0.12, relwidth=0.16)
 
         self.copyMsg = tk.Label(self.frameBack, text="", bg="#4F4F4F", font=("verdana", 8, 'italic'))
         self.copyMsg.place(relx=0.01, rely=0.69, relheight=0.05, relwidth=0.25)
 
 
-    def saveAs(self): 
+    def save_as(self): 
         '''
             Sets up the 'Export' button to allow saving the calculation history.
         '''
-        self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= downloadHistory, font=("verdana", 8, "italic", 'bold'))
+        self.saveButton = tk.Button(self.frameBack,text="export", bg="#4F4F4F", bd=1, command= download_archive, font=("verdana", 8, "italic", 'bold'))
         self.saveButton.place(relheight=0.07, relwidth=0.11,relx=0.5, rely=0.94, anchor=tk.CENTER)
     
 
@@ -273,11 +273,11 @@ class Apliccation():
         self.entryCalc.delete(0, tk.END)
         self.valueOffer.set('')
         self.priceResult.set('')
-        self.placefullResult.set('')
+        self.placeFullResult.set('')
         self.entryFullWeek.delete(0, tk.END)
 
 
-    def delButton(self):
+    def del_button(self):
         '''
             Sets up 'clear' button to clean labels
         '''

@@ -1,5 +1,5 @@
 from math import ceil
-from source.history import saveHistory
+from src.history import register_history
 from tkinter import messagebox
 
 
@@ -10,7 +10,7 @@ class Calculator():
 
     def __init__(self):
         '''
-            set variables
+            set attributes
         '''
         self.floatValue = 0
     
@@ -37,14 +37,14 @@ class Calculator():
                 return None
             
             
-            discounts = {
+            discountsArr = {
                 0: (0.15, '15%'),
                 1: (0.25, '25%'),
                 2: (0.35, '35%'),
             }
 
-            if option in discounts:
-                discount, percent = discounts[option]
+            if option in discountsArr:
+                discount, percent = discountsArr[option]
             else:
                 messagebox.showerror('erro','Opção inválida')
     
@@ -56,7 +56,7 @@ class Calculator():
 
             outcome = ceil(originalValue * 100) / 100
 
-            saveHistory(self.floatValue, outcome, percent)
+            register_history(self.floatValue, outcome, percent)
             
             return outcome
         

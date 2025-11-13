@@ -14,7 +14,7 @@ HISTORY_FILE = os.path.join(HISTORY_DIR, 'history.json')
 os.makedirs(HISTORY_DIR, exist_ok=True)
 
 
-def saveHistory(precoPor, precoDe, percent):
+def register_history(precoPor, precoDe, percent):
     '''
     Saves a new calculation entry to a JSON history file.
 
@@ -46,7 +46,7 @@ def saveHistory(precoPor, precoDe, percent):
         json.dump(history, arq, indent=4)
 
 
-def downloadHistory(): 
+def download_archive(): 
     '''
         Exports the calculation history to an Excel file.
     '''
