@@ -226,19 +226,11 @@ class Apliccation():
         getFullChoice = self.fullChoice.get()
         weekEntry = self.entryFullWeek.get()
 
-<<<<<<< HEAD:source/window.py
-        fullResult = self.classCalc.mathFull(getFullChoice, weekEntry)
-        if fullResult is not None:
-            self.placefullResult.set(fullResult)
-        else:
-            self.placefullResult.set('')
-=======
         fullResult = self.calc_class.mathFull(getFullChoice, weekEntry)
         if fullResult is not None:
             self.placeFullResult.set(fullResult)
         else:
             self.placeFullResult.set('')
->>>>>>> refactor:src/interface.py
 
 
     def copy_button(self):
