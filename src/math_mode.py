@@ -15,7 +15,7 @@ class Calculator():
         self.floatValue = 0
     
     
-    def calc(self, option, value):
+    def calc(self, option: int, value: str):
         '''
             Calculates the original price based on a user-selected discount.
 
@@ -72,7 +72,7 @@ class Calculator():
 
 
     ## CÁLCULO DO ESTOQUE FULL POR SEMANA
-    def mathFull(self, fullWeeks, salesNumber): 
+    def mathFull(self, fullWeeks: int, salesNumber: str): 
         '''
             Calculates the number of items to send to the 'Full' center.
             Args:
