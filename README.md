@@ -28,7 +28,7 @@ Assim, o vendedor garante uma oferta **atrativa e estratégica**, sem precisar c
 
 ## ⚙ Como o programa funciona?  
 
-### 🟡 Cálculo de Preço Comercial  
+### Cálculo de Preço Comercial  
 
 O usuário define um valor desejado (ex.: 39,90) e escolhe uma porcentagem de desconto.
 
@@ -36,7 +36,7 @@ O programa calcula automaticamente _qual deve ser o preço base_ para que, ao ap
 
 <img width="350" height="249" alt="precode" src="https://github.com/user-attachments/assets/b061c5e8-bdd6-46f6-b16b-414a1d9cc458" />
 
-📌 _Exemplo:_
+_Exemplo:_
 
 - Valor desejado: 39,90
 
@@ -52,7 +52,7 @@ O Mercado Livre oferece o sistema _Full_, onde vendedores enviam estoque para ce
 
 Para evitar défict de produtos e perca de vendas, o programa calcula automaticamente _quantas unidades devem ser enviadas_, com base no número de vendas semanais e no período de cobertura desejado.
 
-📌 _Exemplo:_
+_Exemplo:_
 
 - Vendas nos últimos 7 dias: 25 unidades
 
@@ -74,7 +74,7 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.
 
 <img width="474" height="477" alt="Screenshot_1" src="https://github.com/user-attachments/assets/79ca8bea-c59d-4195-88a7-13b1b06304ed" />
 
-### 🧾 Campos da Interface  
+### Campos da Interface  
 
 #### Preço Comercial
 
@@ -110,7 +110,7 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.
 
 ## Dev Infos
 
-### 🔧 Como rodar o projeto  
+### Como rodar o projeto  
 
 1. Crie e ative um ambiente virtual:
 
