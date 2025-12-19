@@ -2,5 +2,4 @@ pillow
 pandas
 openpyxl
 platformdirs
-pathlib
 pytest
