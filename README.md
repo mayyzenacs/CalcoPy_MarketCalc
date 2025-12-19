@@ -160,8 +160,3 @@ users\user_name\appData\local
 - Rode pelo terminal 'python -m source.window'
 
 
-
----
-=======
----
->>>>>>> refactor
