@@ -1,10 +1,12 @@
-# 📊 CalcoPy MktCalc  
+# CalcoPy MktCalc | Calculadora de Preços Comerciais
 
+<div align="center">
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat)
 ![pandas Badge](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=fff&style=flat)
 ![JSON Badge](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff&style=flat)
 ![Python Badge](https://img.shields.io/badge/Tkinter-3776AB?logo=python&logoColor=fff&style=flat)
+</div>
 
 <img width="1890" height="749" alt="calcopy_png" src="https://github.com/user-attachments/assets/27547a4a-4888-4f9c-9c4a-aed7239d9da6" />
 
@@ -14,7 +16,7 @@ Um _preço comercial_ é um valor atrativo para o cliente, geralmente arredondad
 
 Esse recurso é muito utilizado em marketplaces como o _Mercado Livre_ para precificação de produtos.
 
-### 🏷️ Quando vemos um produto anunciado como "de 539 por 299", temos dois elementos estratégicos:
+### Quando vemos um produto anunciado como "de 539 por 299", temos dois elementos estratégicos:
 
 - Um **desconto comercial** aplicado para criar a percepção de vantagem.
 
@@ -24,11 +26,9 @@ A _CalcoPy_ automatiza esse processo: ela calcula automaticamente qual deve ser 
 
 Assim, o vendedor garante uma oferta **atrativa e estratégica**, sem precisar calcular manualmente.
 
----
-
 ## ⚙ Como o programa funciona?  
 
-### Cálculo de Preço Comercial  
+### 🏷️ Cálculo de Preço Comercial  
 
 O usuário define um valor desejado (ex.: 39,90) e escolhe uma porcentagem de desconto.
 
@@ -43,8 +43,6 @@ _Exemplo:_
 - Desconto: 10%
 
 - O programa descobre qual valor _“de”_ resulta em 39,90 após o desconto → O valor "preço de" que deve ser cadastrado no martkeplace e descontado a porcentagem desejada de acordo com a interface do marketplace.
-
----
 
 ### 📦 Cálculo de Envio de Estoque (Full)  
 
@@ -63,8 +61,6 @@ _Exemplo:_
 Resultado: Envio de 150 unidades para cobrir 6 semanas de estoque.
 
 Assim, o vendedor mantém o estoque equilibrado e não perde vendas.
-
----
 
 ## 🖥 Como usar  
 
@@ -105,8 +101,6 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.
 11. _Limpar campos_ – reinicia os dados inseridos.
 
 12. _Exportar histórico_ – salva todas as operações em um arquivo _Excel_.
-
----
 
 ## Dev Infos
 
