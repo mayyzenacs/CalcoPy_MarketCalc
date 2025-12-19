@@ -1,12 +1,11 @@
 # CalcoPy MktCalc | Calculadora de Preços Comerciais
 
-<div align="center">
+
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=flat)
 ![pandas Badge](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=fff&style=flat)
 ![JSON Badge](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff&style=flat)
 ![Python Badge](https://img.shields.io/badge/Tkinter-3776AB?logo=python&logoColor=fff&style=flat)
-</div>
 
 <img width="1890" height="749" alt="calcopy_png" src="https://github.com/user-attachments/assets/27547a4a-4888-4f9c-9c4a-aed7239d9da6" />
 
