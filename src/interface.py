@@ -16,7 +16,7 @@ def resourcePath(relative):
     except Exception:
         base = os.path.abspath('.')
     return os.path.join(base, relative)
-
+    
 
 '''
     initial class and functions calls
@@ -28,7 +28,7 @@ class Apliccation():
         including widgets, layouts, and event handling.
     '''
     def __init__(self):
-
+        self.root = tk.Tk()
         self.priceResult = tk.StringVar()
         self.placeFullResult = tk.StringVar()
         self.valueOffer = tk.StringVar()
@@ -36,7 +36,7 @@ class Apliccation():
         self.fullChoice = tk.IntVar()
         self.radioChoice = tk.IntVar()
 
-        self.root = root
+        
         self.calc_class = Calculator()
         self.main_frame()
         self.buttons_calc_main_frame()
@@ -55,15 +55,15 @@ class Apliccation():
         self.root.geometry("480x450")
         self.root.resizable(False, False)
 
-        logoPath = resourcePath('source/img/logo.png')
+        logoPath = resourcePath('src/img/logo.png')
         self.bgImage = Image.open(logoPath)
-        self.resizedImage = self.bgImage.resize((500,180))
+        self.resizedImage = self.bgImage.resize((456,120))
         self.imageB = ImageTk.PhotoImage(self.resizedImage)
         self.bgImageLabel = tk.Label(self.root, image=self.imageB, bd=0, bg="#000000")
-        self.bgImageLabel.place(relheight=0.21, relwidth=1, anchor=tk.CENTER, relx=0.5, rely=0.1)
+        self.bgImageLabel.place(relx=0.5, rely=0, anchor='n')
 
-        iconPath = resourcePath('source/img/icon.png')
-        self.img = PhotoImage(file=iconPath)
+        iconPath = resourcePath('src/img/icon.png')
+        self.img = tk.PhotoImage(file=iconPath, master=self.root)
         self.root.iconphoto(False, self.img)
 
         self.frameBack = tk.Frame(self.root, relief="solid", bg="#4F4F4F")
@@ -286,8 +286,7 @@ class Apliccation():
 
         
 if __name__ == "__main__":
-    root = tk.Tk()
     app = Apliccation()
-    root.mainloop()
+    app.root.mainloop()
 
     

@@ -135,13 +135,15 @@ pip install -r requirements.txt
 3. Rode o programa:
 
 ```
-python -m source.window
+python -m src.interface
 ```
 
 O histórico de operaçoes (history.json) é salvo automaticamente em:
 
 ```
-users\user_name\appData\local
+users\user_name\appData\local          # Windows
+
+/home/user_name/.local/share           # Linux/Mac
 ```
 
 ## ⚠️ Possíveis Problemas  
@@ -154,8 +156,8 @@ users\user_name\appData\local
 
 - Rode dentro de um ambiente virtual e instale diretamente o pandas com 'pip install pandas'
 
-### no module named source
+### no module named src
 
-- Rode pelo terminal 'python -m source.window'
+- Rode pelo terminal 'python -m src.interface'
 
 ---
