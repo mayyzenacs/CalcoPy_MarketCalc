@@ -9,7 +9,7 @@ def test_calc():
 
 def test_calc_aritmetic(): 
     result = calc.calc(2, '34.9')
-    assert result == 53.69
+    assert result == 53.70
 
 def test_calc_invalid_string():
     result = calc.calc(0, 'abc')

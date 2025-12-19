@@ -4,17 +4,15 @@ import os
 import pandas as pd
 from datetime import datetime
 from tkinter import filedialog, messagebox
-
+from platformdirs import user_data_dir
 
 APPDATA_DIR = os.getenv('LOCALAPPDATA')
-HISTORY_DIR = os.path.join(APPDATA_DIR, 'CalcoPy MarketCalc')
+HISTORY_DIR = user_data_dir('CalcoPy MarketCalc', None)
 HISTORY_FILE = os.path.join(HISTORY_DIR, 'history.json')
-
-
 os.makedirs(HISTORY_DIR, exist_ok=True)
 
 
-def register_history(precoPor, precoDe, percent):
+def register_history(precoPor: float, precoDe: float, percent: str):
     '''
     Saves a new calculation entry to a JSON history file.
 
@@ -50,19 +48,23 @@ def download_archive():
     '''
         Exports the calculation history to an Excel file.
     '''
-    with open(HISTORY_FILE, 'r') as file:
-        data = json.load(file)
+    try: 
 
-    df = pd.DataFrame(data)
+        with open(HISTORY_FILE, 'r') as file:
+            data = json.load(file)
 
-    fileName = f'relatório{datetime.now().strftime('%d-%m-%Y-%H-%M')}.xlsx'
+        df = pd.DataFrame(data)
 
-    filepath = filedialog.asksaveasfilename(
-        initialfile=fileName,
-        filetypes=[('excel files', '*.xlsx')],
-        defaultextension='.xlsx',
-        title="salvar como"
-    )
+        fileName = f'relatório{datetime.now().strftime('%d-%m-%Y-%H-%M')}.xlsx'
+
+        filepath = filedialog.asksaveasfilename(
+            initialfile=fileName,
+            filetypes=[('excel files', '*.xlsx')],
+            defaultextension='.xlsx',
+            title="salvar como"
+        )
+    except: 
+        messagebox.showerror('Erro', 'Operações ainda não realizadas')
 
     if filepath:
         df.to_excel(filepath)

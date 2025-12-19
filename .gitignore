@@ -4,4 +4,7 @@ dist/
 build/
 __pycache__/
 *.spec
-
+build
+.tool-versions
+.so
+.pytest_cache/
