@@ -108,10 +108,7 @@ Assim, o vendedor mantém o estoque equilibrado e não perde vendas.
 
 ---
 
-<<<<<<< HEAD
 
-=======
->>>>>>> refactor
 ## Dev Infos
 
 ### 🔧 Como rodar o projeto  
@@ -162,8 +159,7 @@ users\user_name\appData\local
 
 - Rode pelo terminal 'python -m source.window'
 
-<<<<<<< HEAD
-  
+
 
 ---
 =======
